@@ -29,6 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['.vercel.app']
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,9 +39,24 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'pages'
+    'rest-framework',
+    'rest_framework.authtoken',
+    'pages',
+    'users'
+
 ]
 
+
+AUTH_USER_MODEL = 'users.CustomUser'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+}
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
